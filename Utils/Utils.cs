@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
-namespace INFSD_Final_Project.Utils
+namespace PentruAnimale_FinalProject.Utils
 {
     public class Utils
     {

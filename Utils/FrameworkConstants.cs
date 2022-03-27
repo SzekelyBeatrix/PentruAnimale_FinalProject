@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace INFSD_Final_Project.Utils
+namespace PentruAnimale_FinalProject.Utils
 {
     public class FrameworkConstants
     {

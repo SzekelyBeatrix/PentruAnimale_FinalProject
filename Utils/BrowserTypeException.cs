@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 
 
-namespace INFSD_Final_Project.Utils
+namespace PentruAnimale_FinalProject.Utils
 {
 
     [Serializable]
