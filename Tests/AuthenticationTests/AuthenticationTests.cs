@@ -24,8 +24,7 @@ namespace PentruAnimale_FinalProject.Tests
             mp.MoveToLoginPage();
 
             LoginPage lp = new LoginPage(_driver);
-            lp.CheckPage();
-            /*lp.ClosePopUp();*/
+            Assert.IsTrue(lp.CheckLoginLabel("Intra in Cont"));
             lp.Login("abcde@yahoo.com", "123456789");
            
         }

@@ -40,7 +40,7 @@ namespace PentruAnimale_FinalProject.PageModels
 
         public Boolean CheckRegisterLabel(string label)
         {
-            return String.Equals(label.ToLower(), driver.FindElement(By.CssSelector(clientNouLabelSelector)).Text.ToLower());
+            return String.Equals(label.ToLower(), driver.FindElement(By.XPath(clientNouLabelSelector)).Text.ToLower());
         }
 
 
@@ -61,7 +61,6 @@ namespace PentruAnimale_FinalProject.PageModels
             passInput.SendKeys(pass);
             // driver.FindElement(By.CssSelector(checkoferteBoxSelector)).Click();
             //driver.FindElement(By.Id(checkpromotionsBoxSelector)).Click(); they come by default checked, you can uncheck it with this function
-            Thread.Sleep(5000);
             var inregistreazaButton = driver.FindElement(By.Id(inregistreazaButtonSelector));
             inregistreazaButton.Submit();
 

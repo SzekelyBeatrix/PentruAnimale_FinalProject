@@ -10,7 +10,7 @@ namespace PentruAnimale_FinalProject.Tests.CartAdd
 {
     class AddToCartTests : BaseTest
     {
-        string url = FrameworkConstants.GetUrl();
+        string url = FrameworkConstants.GetUrl()+ promotionsPath;
 
         [Test]
         public void addToCartTest()
@@ -18,14 +18,10 @@ namespace PentruAnimale_FinalProject.Tests.CartAdd
             testName = TestContext.CurrentContext.Test.Name;
             _test = _extent.CreateTest(testName);
             _driver.Navigate().GoToUrl(url);
-            MainPage mp = new MainPage(_driver);
-            mp.CloseCookies();
+            CartPage cp = new CartPage(_driver);
+            Assert.IsTrue(cp.CheckpromotionsTextLabel("Promotii"));
+            cp.AddToCart(0);
 
-            /*CartPage cp = new CartPage(_driver);
-            cp.MoveToViewCartPage();
-            cp.CheckPage();
-            cp.ShoppingCart();
-            cp.AddToCartNavigator();*/
         }
 
 

@@ -24,7 +24,7 @@ namespace PentruAnimale_FinalProject.Tests
         protected static string loginUrlPath = "/inregistrare";
         protected static string registrationUrlPath = "/account/register";
         protected static string cartUrlPath = "/cart";
-        protected static string collectionsPath = "/collections/all";
+        protected static string promotionsPath = "/promotii";
 
         [OneTimeSetUp]
         protected void ExtentStart()
