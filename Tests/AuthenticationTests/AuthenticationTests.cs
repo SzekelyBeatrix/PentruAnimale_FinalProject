@@ -26,8 +26,8 @@ namespace PentruAnimale_FinalProject.Tests
             LoginPage lp = new LoginPage(_driver);
             lp.CheckPage();
             /*lp.ClosePopUp();*/
-            lp.Login("aabb@gmail.com", "Aabbaabb");
-           // Assert.IsTrue(lp.CheckErrorMessage("Incorrect email or password."));*/
+            lp.Login("abcde@yahoo.com", "123456789");
+           
         }
         [Test]
         public void AuthenticationNegativ()
@@ -40,9 +40,9 @@ namespace PentruAnimale_FinalProject.Tests
             mp.MoveToLoginPage();
 
             LoginPage lp = new LoginPage(_driver);
-            Assert.IsTrue(lp.CheckLoginLabel("Login"));
+            Assert.IsTrue(lp.CheckLoginLabel("Intra in Cont"));
             lp.Login(Utils.Utils.GenerateRandomStringCount(10) + "@check.com", Utils.Utils.GenerateRandomStringCount(10));
-
+            Assert.IsTrue(lp.CheckErrorMessage("Adresa de e-mail / parola introduse sunt incorecte. Te rugam sa incerci din nou.")); 
         }
     }
 }

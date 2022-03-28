@@ -22,7 +22,6 @@ namespace PentruAnimale_FinalProject.PageModels
         const string checkoferteBoxSelector = "#registrationFields > div.ofert-section > p.ofert-check > input"; //css
         const string checkpromotionsBoxSelector = "info-check-input"; //id
 
-
         public RegisterPage(IWebDriver driver) : base(driver)
         {
         }
@@ -60,12 +59,21 @@ namespace PentruAnimale_FinalProject.PageModels
             var passInput = driver.FindElement(By.XPath(parolaInputSelector));
             passInput.Clear();
             passInput.SendKeys(pass);
-           // driver.FindElement(By.CssSelector(checkoferteBoxSelector)).Click();
+            // driver.FindElement(By.CssSelector(checkoferteBoxSelector)).Click();
             //driver.FindElement(By.Id(checkpromotionsBoxSelector)).Click(); they come by default checked, you can uncheck it with this function
             Thread.Sleep(5000);
             var inregistreazaButton = driver.FindElement(By.Id(inregistreazaButtonSelector));
             inregistreazaButton.Submit();
 
+        }
+        public void CheckErrorColor()
+        {
+            var nameError = driver.FindElement(By.XPath(numeLabelSelector));
+           String errorColor= nameError.GetCssValue(".error");
+            if (errorColor.Equals("#d90404"))
+                Console.WriteLine("The RegistrationNegativ WORKS!!!");
+            else
+                Console.WriteLine("I am unable to find the Error Color!");
         }
     }
 }

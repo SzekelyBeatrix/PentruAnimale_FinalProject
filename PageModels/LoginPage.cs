@@ -25,7 +25,7 @@ namespace PentruAnimale_FinalProject.PageModels
         }
         public Boolean CheckLoginLabel(string label)
         {
-            return String.Equals(label.ToLower(), driver.FindElement(By.Id(loginPageLabelSelector)).Text.ToLower());
+            return String.Equals(label.ToLower(), driver.FindElement(By.CssSelector(intraInContLabelSelector)).Text.ToLower());
         }
 
         public string CheckPage()
