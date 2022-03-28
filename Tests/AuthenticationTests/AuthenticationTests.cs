@@ -27,24 +27,22 @@ namespace PentruAnimale_FinalProject.Tests
             lp.CheckPage();
             /*lp.ClosePopUp();*/
             lp.Login("aabb@gmail.com", "Aabbaabb");
-            /*Thread.Sleep(5000);
-            Assert.IsTrue(lp.CheckErrorMessage("Incorrect email or password."));*/
+           // Assert.IsTrue(lp.CheckErrorMessage("Incorrect email or password."));*/
         }
-        //[Test]
-        /*public void AuthenticationNegativ()
+        [Test]
+        public void AuthenticationNegativ()
         {
             testName = TestContext.CurrentContext.Test.Name;
             _test = _extent.CreateTest(testName);
             _driver.Navigate().GoToUrl(url);
             MainPage mp = new MainPage(_driver);
             mp.CloseCookies();
-            mp.CheckMainPageButtons();
             mp.MoveToLoginPage();
 
             LoginPage lp = new LoginPage(_driver);
             Assert.IsTrue(lp.CheckLoginLabel("Login"));
-            lp.Login(Utils.Utils.GenerateRandomStringCount(10) + "@check.com", Utils.Utils.GenerateRandomStringCount(10));*/
+            lp.Login(Utils.Utils.GenerateRandomStringCount(10) + "@check.com", Utils.Utils.GenerateRandomStringCount(10));
 
-
+        }
     }
 }

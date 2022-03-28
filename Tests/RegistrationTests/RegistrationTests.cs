@@ -30,9 +30,9 @@ namespace PentruAnimale_FinalProject.Tests.RegistrationTests
 
             RegisterPage rp = new RegisterPage(_driver);
             rp.MoveToRegisterPage();
-           // Assert.IsTrue(rp.CheckRegisterLabel("Client Nou: Inregistrare"));
-            rp.RegisterUser("aaaaaa","aaa","aaaa@yahoo.com","aaaaa");
-            rp.RegisterUser(Utils.Utils.GenerateRandomStringCount(10), Utils.Utils.GenerateRandomStringCount(10), Utils.Utils.GenerateRandomStringCount(10) + "@check.com", Utils.Utils.GenerateRandomStringCount(10)); ;
+           Assert.IsTrue(rp.CheckRegisterLabel("Client Nou: Inregistrare"));
+           // rp.RegisterUser("aaaaaa","aaa","aaaa@yahoo.com","aaaaa");
+            rp.RegisterUser(Utils.Utils.GenerateRandomStringCountWithoutNumbers(10), Utils.Utils.GenerateRandomStringCountWithoutNumbers(10), Utils.Utils.GenerateRandomStringCount(10) + "@check.com", Utils.Utils.GenerateRandomStringCount(10)); ;
 
 
         }

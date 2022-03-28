@@ -11,7 +11,7 @@ namespace PentruAnimale_FinalProject.PageModels
     class LoginPage : BasePage
     {
         const string intraInContLabelSelector = "body > div.container-h.clearfix.mainContainer > div.container-h.mobile-np.clearfix > div.cart-page > div > div.acount-log.cart-box.col-lg-4.col-md-4.col-sm-4.pull-right.row > h2";
-        const string loginPageLabelSelector = "inputClient"; //class
+        const string loginPageLabelSelector = "inputClient"; 
         const string emailLabelSel = "/html/body/div[2]/div[1]/div[1]/div/div[2]/form/label[1]/span";//xpath
         const string emailInputSel = "_loginEmail"; //id
         const string emailErrorSel = "body > div.container-h.clearfix.mainContainer > div.container-h.mobile-np.clearfix > div.cart-page > div > div.acount-log.cart-box.col-lg-4.col-md-4.col-sm-4.pull-right.row > span"; //css
@@ -25,7 +25,7 @@ namespace PentruAnimale_FinalProject.PageModels
         }
         public Boolean CheckLoginLabel(string label)
         {
-            return String.Equals(label.ToLower(), driver.FindElement(By.CssSelector(loginPageLabelSelector)).Text.ToLower());
+            return String.Equals(label.ToLower(), driver.FindElement(By.Id(loginPageLabelSelector)).Text.ToLower());
         }
 
         public string CheckPage()

@@ -4,23 +4,17 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace PentruAnimale_FinalProject.PageModels
 {
     public class MainPage : BasePage
     {
         const string acceptCookiesSelector = "cc-cookie-accept"; //class
-        const string accountButtonSelector = "/html/body/header/div/div/div/div[2]/ul/li[5]/a";//xpath
-       
-
-
-        const string pageTextSelector = "#home-stories > h2"; //css
-        const string collectionsButtonSelector = "#shopify-section-header-template > header > div.tt-desktop-header > div > div > div.tt-desctop-parent-menu.tt-parent-box.tt-obj-menu > div > nav > ul > li:nth-child(1) > a > span";
-        const string catalogButtonSelector = "#shopify-section-header-template > header > div.tt-desktop-header > div > div > div.tt-desctop-parent-menu.tt-parent-box.tt-obj-menu > div > nav > ul > li:nth-child(2) > a > span";
-        const string searchButtonSelector = "#shopify-section-header-template > header > div.tt-mobile-header.tt-mobile-header-inline.tt-mobile-header-inline-stuck > div > div > div.tt-mobile-parent-menu-icons > div.tt-mobile-parent-search.tt-parent-box > div > button";//css
-        const string cartButtonSelector = "#shopify-section-header-template > header > div.tt-mobile-header.tt-mobile-header-inline.tt-mobile-header-inline-stuck > div > div > div.tt-mobile-parent-menu-icons > div.tt-mobile-parent-cart.tt-parent-box > div > button";//css
-
-        const string loginButtonExpandedSelector = "#shopify-section-header-template > header > div.tt-desktop-header > div > div > div.tt-obj-options.obj-move-right.tt-position-absolute > div.tt-desctop-parent-account.tt-parent-box > div > div > div.tt-dropdown-inner > ul > li:nth-child(1) > a";
+        const string accountButtonSelector = "body > header > div > div > div > div.col-md-5.col-sm-4.col-xs-12 > ul > li:nth-child(5) > a"; //xpath
+        const string menuButtonSelector = "#logo > a.menu-btn-s > i";//css
+        const string promotionsButtonSelector = "//*[@id='main-navigation']/div[1]/ul/li[1]/a";//xpath
+        const string allPromotionsButtonSelector = "body > div.container-h.clearfix.mainContainer > div.product-day-header > a";//css
 
         public MainPage(IWebDriver driver) : base(driver)
         {
@@ -35,13 +29,17 @@ namespace PentruAnimale_FinalProject.PageModels
 
         public void MoveToLoginPage()
         {
-            var accountButton = Utils.Utils.WaitForElementClickable(driver, 20, By.XPath(accountButtonSelector));
+            Thread.Sleep(5000);
+            var accountButton = Utils.Utils.WaitForElementClickable(driver, 20, By.CssSelector(accountButtonSelector));
             accountButton.Click();
-
         }
 
-      
-
+        public void MoveToMenuPage()
+        {
+            driver.FindElement(By.CssSelector(menuButtonSelector)).Click();
+            driver.FindElement(By.XPath(promotionsButtonSelector)).Click();
+            driver.FindElement(By.CssSelector(allPromotionsButtonSelector)).Click();
+        }
     }
 
 }
