@@ -19,13 +19,13 @@ namespace PentruAnimale_FinalProject.Tests
             testName = TestContext.CurrentContext.Test.Name;
             _test = _extent.CreateTest(testName);
             _driver.Navigate().GoToUrl(url);
-            /*MainPage mp = new MainPage(_driver);
+            MainPage mp = new MainPage(_driver);
             mp.CloseCookies();
-            mp.CheckMainPageButtons();
-            mp.MoveToLoginPage();*/
+            mp.MoveToLoginPage();
 
             LoginPage lp = new LoginPage(_driver);
-            Assert.IsTrue(lp.CheckLoginLabel("Login"));
+            lp.CheckPage();
+            /*lp.ClosePopUp();*/
             lp.Login("aabb@gmail.com", "Aabbaabb");
             /*Thread.Sleep(5000);
             Assert.IsTrue(lp.CheckErrorMessage("Incorrect email or password."));*/

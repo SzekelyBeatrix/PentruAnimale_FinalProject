@@ -25,16 +25,14 @@ namespace PentruAnimale_FinalProject.Tests.RegistrationTests
             testName = TestContext.CurrentContext.Test.Name;
             _test = _extent.CreateTest(testName);
             _driver.Navigate().GoToUrl(url);
-            /*MainPage mp = new MainPage(_driver);
+            MainPage mp = new MainPage(_driver);
             mp.CloseCookies();
-            mp.CheckMainPageButtons();*/
 
             RegisterPage rp = new RegisterPage(_driver);
             rp.MoveToRegisterPage();
-            Assert.IsTrue(rp.CheckRegisterLabel("CREATE AN ACCOUNT"));
-            // rp.RegisterUser("aaaaaa","aaa","aaaa@yahoo.com","aaaaa");
+           // Assert.IsTrue(rp.CheckRegisterLabel("Client Nou: Inregistrare"));
+            rp.RegisterUser("aaaaaa","aaa","aaaa@yahoo.com","aaaaa");
             rp.RegisterUser(Utils.Utils.GenerateRandomStringCount(10), Utils.Utils.GenerateRandomStringCount(10), Utils.Utils.GenerateRandomStringCount(10) + "@check.com", Utils.Utils.GenerateRandomStringCount(10)); ;
-            rp.CheckReturnRegisterPage();
 
 
         }

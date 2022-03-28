@@ -33,4 +33,8 @@
     <Folder Include="TestData\" />
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="xcopy /y $(ProjectDir)\*.properties $(ProjectDir)$(OutDir)\&amp;&#xD;&#xA;xcopy /y $(ProjectDir)\TestData\*.* $(ProjectDir)$(OutDir)\TestData\*.*" />
+  </Target>
+
 </Project>
