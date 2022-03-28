@@ -13,7 +13,9 @@ namespace PentruAnimale_FinalProject.PageModels
         const string promotionsTextLabelSelector = "/html/body/div[2]/div[4]/div[1]/h1"; //Xpath
         const string addToCartButtonsSelector = "body > div.container-h.clearfix.mainContainer > div.categ-section.clearfix.shadowed > div.categories-list.col-xs-12.col-lg-9.col-md-9.col-sm-9.no-padding > div.listed-categories > ul > li:nth-child(2) > a.prod-image.__prodUrl"; //css
         const string productDetailsCheckOutExtenderSelector = "#productInfo > a > u"; //Css
-        const string CheckOutExtenderAddToCartSelector = "#addToCartButton"; //css
+        const string CheckOutExtenderAddToCartSelector = "addToCartButton"; //id
+        const string shippingTextSelector = "deliveryInformation";//id
+        const string mainPageCartButtonSelector = "//*[@id='_cartSummary']/a";//xpath
 
         public CheckOutPage(IWebDriver driver) : base(driver)
         {
@@ -28,10 +30,10 @@ namespace PentruAnimale_FinalProject.PageModels
         public void NavigateToCheckOut()
         {
            driver.FindElement(By.CssSelector(addToCartButtonsSelector)).Click();
-            Thread.Sleep(5000);
-           var CheckOutExtenderAddToCart = Utils.Utils.WaitForElementClickable(driver, 7, By.CssSelector(CheckOutExtenderAddToCartSelector));
+           driver.FindElement(By.Id(shippingTextSelector));
+           var CheckOutExtenderAddToCart = Utils.Utils.WaitForElementClickable(driver, 10, By.Id(CheckOutExtenderAddToCartSelector));
             CheckOutExtenderAddToCart.Click();
-
+            driver.FindElement(By.XPath(mainPageCartButtonSelector)).Click();
         }
 
     }

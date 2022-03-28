@@ -17,8 +17,12 @@ namespace PentruAnimale_FinalProject.Tests.CheckOutTests
             testName = TestContext.CurrentContext.Test.Name;
             _test = _extent.CreateTest(testName);
             _driver.Navigate().GoToUrl(url);
-            CartPage cp = new CartPage(_driver);
-            Assert.IsTrue(cp.CheckpromotionsTextLabel("Promotii"));
+            MainPage mp = new MainPage(_driver);
+            mp.CloseCookies();
+            mp.MoveToMenuPage();
+
+           /* CartPage cp = new CartPage(_driver);
+            Assert.IsTrue(cp.CheckpromotionsTextLabel("Promotii"));*/
 
             CheckOutPage cop = new CheckOutPage(_driver);
             cop.NavigateToCheckOut();
