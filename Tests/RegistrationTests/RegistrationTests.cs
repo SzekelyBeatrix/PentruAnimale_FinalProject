@@ -49,8 +49,8 @@ namespace PentruAnimale_FinalProject.Tests.RegistrationTests
             rp.MoveToRegisterPage();
             Assert.IsTrue(rp.CheckRegisterLabel("Client Nou: Inregistrare"));
             // rp.RegisterUser("aaaaaa","aaa","aaaa@yahoo.com","aaaaa");
-            Thread.Sleep(5000);
             rp.RegisterUser(Utils.Utils.GenerateRandomStringCount(10), Utils.Utils.GenerateRandomStringCount(10), Utils.Utils.GenerateRandomStringCount(10) + "@check.com", Utils.Utils.GenerateRandomStringCount(10)); ;
+            Thread.Sleep(5000);
             rp.CheckErrorColor();
 
         }

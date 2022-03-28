@@ -70,7 +70,7 @@ namespace PentruAnimale_FinalProject.PageModels
             var nameError = driver.FindElement(By.XPath(numeLabelSelector));
            String errorColor= nameError.GetCssValue(".error");
             if (errorColor.Equals("#d90404"))
-                Console.WriteLine("The RegistrationNegativ WORKS!!!");
+                Console.WriteLine("The RegistrationNegativ test WORKS!!! :)");
             else
                 Console.WriteLine("I am unable to find the Error Color!");
         }

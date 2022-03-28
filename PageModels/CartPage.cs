@@ -33,6 +33,4 @@ namespace PentruAnimale_FinalProject.PageModels
         }
     }
 
-
-
 }
