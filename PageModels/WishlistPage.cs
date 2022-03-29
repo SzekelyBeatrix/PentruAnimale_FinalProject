@@ -5,12 +5,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using OpenQA.Selenium.Interactions;
 
 namespace PentruAnimale_FinalProject.PageModels
 {
     class WishlistPage : BasePage
     {
         const string mainPageFavoriteButtonSelector = "/html/body/header/div/div/div/div[2]/ul/li[4]/a";
+        const string addWishListButtonSelector = "//*[@id='addToWishlist']/img"; //xpath
+        const string addToCartButtonsSelector = "prod-add-cart-btn"; //class
+        const string wishListButtonSelector = "wishlist-btn";//class
         public WishlistPage(IWebDriver driver) : base(driver)
         {
         }
@@ -25,16 +29,14 @@ namespace PentruAnimale_FinalProject.PageModels
             driver.FindElement(By.XPath(mainPageFavoriteButtonSelector)).Click();
 
         }
-        /*public void AddToWishlist()
+        public void AddToWishlist()
         {
-            var catalogButton = Utils.WaitForElementClickable(driver, 10, (By.Id(catalogButtonSelector)));
-            catalogButton.Click();
-            var neonsCatalogButton = Utils.WaitForElementClickable(driver, 10, (By.XPath(neonsButtonSelector)));
-            neonsCatalogButton.Click();
-            var productsAddToCart = Utils.WaitForElementClickable(driver, 10, (By.XPath(productsAddToCartButton)));
-            productsAddToCart.Click();
-            var addToWishlist = Utils.WaitForElementClickable(driver, 10, (By.CssSelector(addToWishlistSelector)));
-            addToWishlist.Click();
-        }*/
+          var addToCartButton = Utils.Utils.WaitForFluentElement(driver, 15, By.ClassName(addToCartButtonsSelector));
+            Actions actions = new Actions(driver);
+            actions.MoveToElement(addToCartButton);
+            Thread.Sleep(5000);
+            driver.FindElement(By.ClassName(addToCartButtonsSelector)).Click();
+            driver.FindElement(By.ClassName(addToCartButtonsSelector)).Click();
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace PentruAnimale_FinalProject.Tests.WishlistTests
             Assert.IsTrue(lp.CheckLoginLabel("Intra in Cont"));
             lp.Login("abcde@yahoo.com", "123456789");
 
+            wp.AddToWishlist();
             
 
         }

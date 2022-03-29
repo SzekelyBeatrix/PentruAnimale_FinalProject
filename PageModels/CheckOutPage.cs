@@ -35,7 +35,7 @@ namespace PentruAnimale_FinalProject.PageModels
             Actions actions = new Actions(driver);
             actions.MoveToElement(addToCartButton);
             Thread.Sleep(5000);
-            driver.FindElement(By.ClassName(addToCartButtonsSelector));
+            driver.FindElement(By.ClassName(addToCartButtonsSelector)).Click();
 
            /* Thread.Sleep(10000);
             driver.FindElement(By.Id(shippingTextSelector));
