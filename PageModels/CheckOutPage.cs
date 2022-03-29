@@ -31,18 +31,19 @@ namespace PentruAnimale_FinalProject.PageModels
 
         public void NavigateToCheckOut()
         {
-            var addToCartButton = Utils.Utils.WaitForFluentElement(driver, 15, By.ClassName(addToCartButtonsSelector));
+            var addToCartButton = Utils.Utils.WaitForFluentElement(driver, 20, By.ClassName(addToCartButtonsSelector));
             Actions actions = new Actions(driver);
             actions.MoveToElement(addToCartButton);
-            Thread.Sleep(5000);
             driver.FindElement(By.ClassName(addToCartButtonsSelector)).Click();
+        }
 
-           /* Thread.Sleep(10000);
+        public void OpenExtenderAddToCart()
+        {
             driver.FindElement(By.Id(shippingTextSelector));
-            driver.FindElement(By.XPath(closePromotionPopupButtonSelector)).Click();
+            //driver.FindElement(By.XPath(closePromotionPopupButtonSelector)).Click();
             var CheckOutExtenderAddToCart = Utils.Utils.WaitForElementClickable(driver, 10, By.XPath(CheckOutExtenderAddToCartSelector));
             CheckOutExtenderAddToCart.Submit();
-            driver.FindElement(By.XPath(mainPageCartButtonSelector)).Click();*/
+            driver.FindElement(By.XPath(mainPageCartButtonSelector)).Click();
         }
 
     }

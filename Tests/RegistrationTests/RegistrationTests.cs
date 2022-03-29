@@ -12,14 +12,6 @@ namespace PentruAnimale_FinalProject.Tests.RegistrationTests
     {
         string url = FrameworkConstants.GetUrl();
 
-        private static IEnumerable<TestCaseData> GetCredentialsDataCsv2()
-        {
-            foreach (var values in Utils.Utils.GetGenericData("TestData\\authenticationData.csv"))
-            {
-                yield return new TestCaseData(values);
-            }
-        }
-
         [Test]
         public void RegistrationTestPositive()
         {

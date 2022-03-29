@@ -26,6 +26,7 @@ namespace PentruAnimale_FinalProject.Tests.CheckOutTests
 
             CheckOutPage cop = new CheckOutPage(_driver);
             cop.NavigateToCheckOut();
+            cop.OpenExtenderAddToCart();
 
         }
     }
