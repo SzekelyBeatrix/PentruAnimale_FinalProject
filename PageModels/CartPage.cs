@@ -12,11 +12,12 @@ namespace PentruAnimale_FinalProject.PageModels
         const string promotionsTextLabelSelector = "/html/body/div[2]/div[4]/div[1]/h1"; //Xpath
         const string addToCartButtonsSelector = "prodHolder"; //tagname
 
-
         public CartPage(IWebDriver driver) : base(driver)
         {
 
         }
+
+
         public Boolean CheckpromotionsTextLabel(string label)
         {
             return String.Equals(label.ToLower(), driver.FindElement(By.XPath(promotionsTextLabelSelector)).Text.ToLower());

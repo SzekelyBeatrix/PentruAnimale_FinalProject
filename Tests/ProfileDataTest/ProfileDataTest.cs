@@ -19,7 +19,7 @@ namespace PentruAnimale_FinalProject.Tests.ProfileDataTest
             }
         }
         [Test, TestCaseSource("GetCredentialsDataCsv")]
-        public void AddDataToProfile(string modifName, string modifPrenume, string company,string region, string city, string address, string phone, string gender, string dobday, string dobmonth, string dobyear)
+        public void AddDataToProfile(string modifName, string modifPrenume, string company, string region, string city, string address, string phone, string gender, string dobday, string dobmonth, string dobyear)
         {
             testName = TestContext.CurrentContext.Test.Name;
             _test = _extent.CreateTest(testName);
@@ -34,8 +34,7 @@ namespace PentruAnimale_FinalProject.Tests.ProfileDataTest
 
             ProfileData pd = new ProfileData(_driver);
             pd.NavigateToPersonalDataForm();
-            pd.TypeInPersonalData(modifName,modifPrenume,company,region,city,address,phone,gender,dobday,dobmonth,dobyear);
+            pd.TypeInPersonalData(modifName, modifPrenume, company, region, city, address, phone, gender, dobday, dobmonth, dobyear);
         }
-
     }
 }

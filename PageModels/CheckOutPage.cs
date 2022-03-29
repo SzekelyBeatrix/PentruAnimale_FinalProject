@@ -11,16 +11,22 @@ namespace PentruAnimale_FinalProject.PageModels
 {
     public class CheckOutPage : BasePage
     {
+        const string mainPageCartButtonSelector = "#_cartSummary > a"; //css
         const string promotionsTextLabelSelector = "/html/body/div[2]/div[4]/div[1]/h1"; //Xpath
         const string addToCartButtonsSelector = "prod-add-cart-btn"; //class
         const string productDetailsCheckOutExtenderSelector = "#productInfo > a > u"; //Css
         const string CheckOutExtenderAddToCartSelector = "//*[@id='addToCartButton']/span"; //xpath
         const string shippingTextSelector = "deliveryInformation";//id
-        const string mainPageCartButtonSelector = "//*[@id='_cartSummary']/a";//xpath
+        //const string mainPageCartButtonSelector = "//*[@id='_cartSummary']/a";//xpath
         const string closePromotionPopupButtonSelector = "//*[@id='ue_push_dialog']/div[2]/div[2]/button[1]";//xpath
         const string moveToElementSelector = "/html/body/div[2]/div[4]/div[3]/div[3]/ul/li[2]/a[1]/img";//xpath
         public CheckOutPage(IWebDriver driver) : base(driver)
         {
+        }
+
+        public void NavigateToCartPage()
+        {
+            driver.FindElement(By.CssSelector(mainPageCartButtonSelector)).Click();
         }
 
         public Boolean CheckpromotionsTextLabel(string label)

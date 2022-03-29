@@ -19,6 +19,7 @@ namespace PentruAnimale_FinalProject.Tests.CartAdd
             _test = _extent.CreateTest(testName);
             _driver.Navigate().GoToUrl(url);
             CartPage cp = new CartPage(_driver);
+
             Assert.IsTrue(cp.CheckpromotionsTextLabel("Promotii"));
             cp.AddToCart(0);
 

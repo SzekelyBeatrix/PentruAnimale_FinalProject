@@ -10,7 +10,7 @@ namespace PentruAnimale_FinalProject.Tests.CheckOutTests
 {
     class CheckOutTests : BaseTest
     {
-        string url = FrameworkConstants.GetUrl() + promotionsPath;
+        string url = FrameworkConstants.GetUrl();
 
         [Test]
         public void addToCartTest()
@@ -20,13 +20,20 @@ namespace PentruAnimale_FinalProject.Tests.CheckOutTests
             _driver.Navigate().GoToUrl(url);
             MainPage mp = new MainPage(_driver);
             mp.CloseCookies();
+            mp.MoveToLoginPage();
 
-           /*CartPage cp = new CartPage(_driver);
-            Assert.IsTrue(cp.CheckpromotionsTextLabel("Promotii"));*/
+            LoginPage lp = new LoginPage(_driver);
+            Assert.IsTrue(lp.CheckLoginLabel("Intra in Cont"));
+            lp.Login("abcde@yahoo.com", "123456789");
+
+
+            /*CartPage cp = new CartPage(_driver);
+             Assert.IsTrue(cp.CheckpromotionsTextLabel("Promotii"));*/
 
             CheckOutPage cop = new CheckOutPage(_driver);
-            cop.NavigateToCheckOut();
-            cop.OpenExtenderAddToCart();
+            cop.NavigateToCartPage();
+            /*cop.NavigateToCheckOut();
+            cop.OpenExtenderAddToCart();*/
 
         }
     }
