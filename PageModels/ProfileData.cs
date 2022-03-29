@@ -9,7 +9,7 @@ namespace PentruAnimale_FinalProject.PageModels
     {
         const string PersonalDataButtonSelector = "body > div.container-h.clearfix.mainContainer > div > div.cart-page > div > div.acount-menu.col-lg-3.col-md-3.col-sm-3 > div:nth-child(2) > ul > li:nth-child(2) > a";//class
         const string PersonalDataLabelSelector = "/html/body/div[2]/div/div[1]/div/h1";//xpath
-        const string dataModifNameInputSelector = "#customerForm > form > div:nth-child(2) > input"; //css
+        const string dataModifNameInputSelector = "#customerForm > form > div:nth-child(1) > p"; //css
         const string dataModifPrenumeInputSelector = "#customerForm > form > div:nth-child(5) > input"; //css
         const string companyInputSelector = "#customerForm > form > div:nth-child(8) > input"; //css
         const string regionInputSelector = "#customerForm > form > div:nth-child(11) > select"; //css
@@ -25,7 +25,7 @@ namespace PentruAnimale_FinalProject.PageModels
 
         public void NavigateToPersonalDataForm()
         {
-            driver.FindElement(By.CssSelector(PersonalDataButtonSelector)).Click(); 
+            driver.FindElement(By.CssSelector(PersonalDataButtonSelector)).Click();
         }
 
         public string CheckPage()
@@ -34,9 +34,9 @@ namespace PentruAnimale_FinalProject.PageModels
             return PersonalDataLabel.Text;
         }
 
-        public void TypeInPersonalData(string modifName,string modifPrenume,string company,string region,string city,string address,string phone,string dob)
+        public void TypeInPersonalData(string modifName, string modifPrenume, string company, string region, string city, string address, string phone, string dob)
         {
-           
+
             var dataModifNameInput = driver.FindElement(By.CssSelector(dataModifNameInputSelector));
             dataModifNameInput.Clear();
             dataModifNameInput.SendKeys(modifName);
@@ -67,5 +67,5 @@ namespace PentruAnimale_FinalProject.PageModels
             saveButton.Submit();
         }
     }
-  
+
 }

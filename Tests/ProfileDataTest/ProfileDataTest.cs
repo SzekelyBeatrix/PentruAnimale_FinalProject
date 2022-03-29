@@ -11,7 +11,7 @@ namespace PentruAnimale_FinalProject.Tests.ProfileDataTest
     {
         string url = FrameworkConstants.GetUrl();
 
-        private static IEnumerable<TestCaseData> GetCredentialsDataCsv2()
+        private static IEnumerable<TestCaseData> GetCredentialsDataCsv()
         {
             foreach (var values in Utils.Utils.GetGenericData("TestData\\authenticationData.csv"))
             {
@@ -19,8 +19,8 @@ namespace PentruAnimale_FinalProject.Tests.ProfileDataTest
             }
         }
 
-        [Test]
-        public void addDataToProfile()
+        [Test, TestCaseSource("GetCredentialsDataCsv")]
+        public void AddDataToProfile(string modifName, string modifPrenume, string company, string region, string city, string address, string phone, string dob)
         {
             testName = TestContext.CurrentContext.Test.Name;
             _test = _extent.CreateTest(testName);
@@ -36,10 +36,9 @@ namespace PentruAnimale_FinalProject.Tests.ProfileDataTest
             ProfileData pd = new ProfileData(_driver);
             pd.NavigateToPersonalDataForm();
             pd.CheckPage();
-            pd.TypeInPersonalData("modifName","modifPrenume","company","region","city","address","phone","dob");
-
-
+            Thread.Sleep(10000);
+            pd.TypeInPersonalData(modifName,modifPrenume,company,region,city,address,phone,dob);
         }
-       
+
     }
 }

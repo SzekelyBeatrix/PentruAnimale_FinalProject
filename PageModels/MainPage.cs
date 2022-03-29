@@ -31,7 +31,7 @@ namespace PentruAnimale_FinalProject.PageModels
         public void MoveToLoginPage()
         {
             //Thread.Sleep(5000);
-            var accountButton = Utils.Utils.WaitForElementClickable(driver, 7, By.CssSelector(accountButtonSelector));
+            var accountButton = Utils.Utils.WaitForElementClickable(driver, 15, By.CssSelector(accountButtonSelector));
             accountButton.Click();
         }
 
