@@ -4,16 +4,15 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading;
 
-namespace PentruAnimale_FinalProject.Tests.CheckOutTests
+namespace PentruAnimale_FinalProject.Tests.WishlistTests
 {
-    class CheckOutTests : BaseTest
+    class WishlistTests : BaseTest
     {
-        string url = FrameworkConstants.GetUrl() + promotionsPath;
+        string url = FrameworkConstants.GetUrl();
 
         [Test]
-        public void addToCartTest()
+        public void WishlistTest()
         {
             testName = TestContext.CurrentContext.Test.Name;
             _test = _extent.CreateTest(testName);
@@ -21,11 +20,14 @@ namespace PentruAnimale_FinalProject.Tests.CheckOutTests
             MainPage mp = new MainPage(_driver);
             mp.CloseCookies();
 
-           /*CartPage cp = new CartPage(_driver);
-            Assert.IsTrue(cp.CheckpromotionsTextLabel("Promotii"));*/
+            WishlistPage wp = new WishlistPage(_driver);
+            wp.WishlistNavigator();
 
-            CheckOutPage cop = new CheckOutPage(_driver);
-            cop.NavigateToCheckOut();
+            LoginPage lp = new LoginPage(_driver);
+            Assert.IsTrue(lp.CheckLoginLabel("Intra in Cont"));
+            lp.Login("abcde@yahoo.com", "123456789");
+
+            
 
         }
     }

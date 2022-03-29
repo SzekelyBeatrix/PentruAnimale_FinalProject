@@ -24,7 +24,7 @@ namespace PentruAnimale_FinalProject.PageModels
 
         public void CloseCookies()
         {
-            var acceptCookie = Utils.Utils.WaitForFluentElement(driver, 5, By.ClassName(acceptCookiesSelector));
+            var acceptCookie = Utils.Utils.WaitForFluentElement(driver, 2, By.ClassName(acceptCookiesSelector));
             acceptCookie.Click();
         }
 

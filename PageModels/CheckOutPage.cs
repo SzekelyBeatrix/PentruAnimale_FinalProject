@@ -5,18 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using OpenQA.Selenium.Interactions;
 
 namespace PentruAnimale_FinalProject.PageModels
 {
     public class CheckOutPage : BasePage
     {
         const string promotionsTextLabelSelector = "/html/body/div[2]/div[4]/div[1]/h1"; //Xpath
-        const string addToCartButtonsSelector = "body > div.container-h.clearfix.mainContainer > div.categ-section.clearfix.shadowed > div.categories-list.col-xs-12.col-lg-9.col-md-9.col-sm-9.no-padding > div.listed-categories > ul > li:nth-child(2) > a.prod-image.__prodUrl"; //css
+        const string addToCartButtonsSelector = "prod-add-cart-btn"; //class
         const string productDetailsCheckOutExtenderSelector = "#productInfo > a > u"; //Css
-        const string CheckOutExtenderAddToCartSelector = "addToCartButton"; //id
+        const string CheckOutExtenderAddToCartSelector = "//*[@id='addToCartButton']/span"; //xpath
         const string shippingTextSelector = "deliveryInformation";//id
         const string mainPageCartButtonSelector = "//*[@id='_cartSummary']/a";//xpath
-
+        const string closePromotionPopupButtonSelector = "//*[@id='ue_push_dialog']/div[2]/div[2]/button[1]";//xpath
+        const string moveToElementSelector = "/html/body/div[2]/div[4]/div[3]/div[3]/ul/li[2]/a[1]/img";//xpath
         public CheckOutPage(IWebDriver driver) : base(driver)
         {
         }
@@ -29,11 +31,18 @@ namespace PentruAnimale_FinalProject.PageModels
 
         public void NavigateToCheckOut()
         {
-           driver.FindElement(By.CssSelector(addToCartButtonsSelector)).Click();
-           driver.FindElement(By.Id(shippingTextSelector));
-           var CheckOutExtenderAddToCart = Utils.Utils.WaitForElementClickable(driver, 10, By.Id(CheckOutExtenderAddToCartSelector));
-            CheckOutExtenderAddToCart.Click();
-            driver.FindElement(By.XPath(mainPageCartButtonSelector)).Click();
+            var addToCartButton = Utils.Utils.WaitForFluentElement(driver, 15, By.ClassName(addToCartButtonsSelector));
+            Actions actions = new Actions(driver);
+            actions.MoveToElement(addToCartButton);
+            Thread.Sleep(5000);
+            driver.FindElement(By.ClassName(addToCartButtonsSelector));
+
+           /* Thread.Sleep(10000);
+            driver.FindElement(By.Id(shippingTextSelector));
+            driver.FindElement(By.XPath(closePromotionPopupButtonSelector)).Click();
+            var CheckOutExtenderAddToCart = Utils.Utils.WaitForElementClickable(driver, 10, By.XPath(CheckOutExtenderAddToCartSelector));
+            CheckOutExtenderAddToCart.Submit();
+            driver.FindElement(By.XPath(mainPageCartButtonSelector)).Click();*/
         }
 
     }
