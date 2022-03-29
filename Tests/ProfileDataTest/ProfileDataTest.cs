@@ -36,6 +36,9 @@ namespace PentruAnimale_FinalProject.Tests.ProfileDataTest
             ProfileData pd = new ProfileData(_driver);
             pd.NavigateToPersonalDataForm();
             pd.CheckPage();
+            pd.TypeInPersonalData("modifName","modifPrenume","company","region","city","address","phone","dob");
+
+
         }
        
     }
