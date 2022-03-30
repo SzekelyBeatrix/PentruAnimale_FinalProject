@@ -13,7 +13,7 @@ namespace PentruAnimale_FinalProject.Tests.CheckOutTests
         string url = FrameworkConstants.GetUrl();
 
         [Test]
-        public void addToCartTest()
+        public void PursueAddToCartTest()
         {
             testName = TestContext.CurrentContext.Test.Name;
             _test = _extent.CreateTest(testName);
@@ -34,6 +34,27 @@ namespace PentruAnimale_FinalProject.Tests.CheckOutTests
             cop.NavigateToCartPage();
             /*cop.NavigateToCheckOut();
             cop.OpenExtenderAddToCart();*/
+
+        }
+        [Test]
+        public void CheckOutTest()
+        {
+            testName = TestContext.CurrentContext.Test.Name;
+            _test = _extent.CreateTest(testName);
+            _driver.Navigate().GoToUrl(url);
+            MainPage mp = new MainPage(_driver);
+            mp.CloseCookies();
+            mp.MoveToLoginPage();
+
+            LoginPage lp = new LoginPage(_driver);
+            Assert.IsTrue(lp.CheckLoginLabel("Intra in Cont"));
+            lp.Login("abcde@yahoo.com", "123456789");
+
+            CheckOutPage cop = new CheckOutPage(_driver);
+            cop.NavigateToCartPage();
+            cop.FinalOrderNavigator();
+            Assert.IsTrue(cop.WeSaveThemFromSomeTrouble("Pentru a trimite comanda, completati urmatoarele informatii"));
+            
 
         }
     }

@@ -1,11 +1,6 @@
-﻿using PentruAnimale_FinalProject.PageModels;
-using PentruAnimale_FinalProject.Utils;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using System;
 
 namespace PentruAnimale_FinalProject.PageModels
 {
@@ -17,9 +12,13 @@ namespace PentruAnimale_FinalProject.PageModels
         const string productDetailsCheckOutExtenderSelector = "#productInfo > a > u"; //Css
         const string CheckOutExtenderAddToCartSelector = "//*[@id='addToCartButton']/span"; //xpath
         const string shippingTextSelector = "deliveryInformation";//id
-        //const string mainPageCartButtonSelector = "//*[@id='_cartSummary']/a";//xpath
         const string closePromotionPopupButtonSelector = "//*[@id='ue_push_dialog']/div[2]/div[2]/button[1]";//xpath
         const string moveToElementSelector = "/html/body/div[2]/div[4]/div[3]/div[3]/ul/li[2]/a[1]/img";//xpath
+        const string finalOrderCheckOutButtonSelector = "#subtotal-section > div > div > div > div:nth-child(3) > div > div > div:nth-child(5) > div > a.final-order.main-btn";
+        const string finalOrderNewsLetterSelector = "newsletterAdd"; //id
+        const string finalOrderCheckTermsSelector = "body > div.container-h.cart-holder.clearfix > div > div > div > div.cart-step2 > div.terms > label > input[type=checkbox]"; //css
+        const string DoCheckOutButtonSelector = "doCheckout";//id
+        const string errorMessageFinalCheckOut = "error"; //for ethical reasons :), but it works if we send a city imput
         public CheckOutPage(IWebDriver driver) : base(driver)
         {
         }
@@ -46,10 +45,23 @@ namespace PentruAnimale_FinalProject.PageModels
         public void OpenExtenderAddToCart()
         {
             driver.FindElement(By.Id(shippingTextSelector));
-            //driver.FindElement(By.XPath(closePromotionPopupButtonSelector)).Click();
             var CheckOutExtenderAddToCart = Utils.Utils.WaitForElementClickable(driver, 10, By.XPath(CheckOutExtenderAddToCartSelector));
             CheckOutExtenderAddToCart.Submit();
             driver.FindElement(By.XPath(mainPageCartButtonSelector)).Click();
+        }
+
+        public void FinalOrderNavigator()
+        {
+            driver.FindElement(By.CssSelector(finalOrderCheckOutButtonSelector)).Click();
+            driver.FindElement(By.Id(finalOrderNewsLetterSelector)).Click();
+            driver.FindElement(By.CssSelector(finalOrderCheckTermsSelector)).Click();
+            driver.FindElement(By.Id(DoCheckOutButtonSelector)).Click();
+        }
+        public Boolean WeSaveThemFromSomeTrouble(string errorMessage)
+        {
+
+            return String.Equals(errorMessage.ToLower(), driver.FindElement(By.ClassName(errorMessageFinalCheckOut)).Text.ToLower());
+
         }
 
     }
